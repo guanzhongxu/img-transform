@@ -52,5 +52,12 @@ export default defineConfig({
 			entities: resolve(__dirname, "./src/entities"),
 			public: resolve(__dirname, "public")
 		}
-	}
+	},
+	build: {
+		rollupOptions: {
+			external: [
+				"sharp"
+			]
+		}
+	},
 });
