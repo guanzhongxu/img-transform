@@ -29,7 +29,14 @@ export default defineConfig({
 		}),
 		electron({
 			main: {
-				entry: "electron/main.ts"
+				entry: "electron/main.ts",
+				vite: {
+					build: {
+						rollupOptions: {
+							external: ["sharp"]
+						}
+					}
+				}
 			},
 			preload: {
 				input: join(__dirname, "electron/preload.ts")
@@ -51,13 +58,6 @@ export default defineConfig({
 			views: resolve(__dirname, "./src/views/"),
 			entities: resolve(__dirname, "./src/entities"),
 			public: resolve(__dirname, "public")
-		}
-	},
-	build: {
-		rollupOptions: {
-			external: [
-				"sharp"
-			]
 		}
 	},
 });
