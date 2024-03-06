@@ -11,7 +11,7 @@ interface Params {
 export default async ({ basePath, filePath, targetPath, formatType, quality }: Params) => {
 	const arr: string[] = [];
 	const p: Promise<string>[] = [];
-	console.time("abc");
+	console.time("run timer:");
 	const imgT = async (basePathElement: string, outputPath: string) => {
 		try {
 			await sharp(basePathElement)
@@ -20,7 +20,7 @@ export default async ({ basePath, filePath, targetPath, formatType, quality }: P
 				})
 				.toFile(outputPath);
 			return outputPath;
-		} catch {
+		} catch (e) {
 			return "";
 		}
 	};
@@ -38,9 +38,10 @@ export default async ({ basePath, filePath, targetPath, formatType, quality }: P
 	}
 	const result = await Promise.all(p);
 	result.forEach(item => {
+		console.log(item);
 		if (item.length > 0) arr.push(item);
 	});
-	console.timeEnd("abc");
+	console.timeEnd("run timer:");
 	return arr;
 };
 

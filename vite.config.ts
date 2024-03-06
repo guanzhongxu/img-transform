@@ -8,9 +8,6 @@ import Components from "unplugin-vue-components/vite";
 import { resolve, join } from "path";
 
 export default defineConfig({
-	optimizeDeps: {
-		exclude: ["sharp"]
-	},
 	plugins: [
 		common({}),
 		vue(),
